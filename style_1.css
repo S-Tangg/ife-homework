@@ -1,0 +1,26 @@
+.col_1 {
+    float: left;
+    margin-top: 0;
+}
+.col_2 {
+    float: left;
+    margin-left:50px;
+    margin-top: 0;
+}
+.col_3 {
+    float: left;
+    margin-left:50px;
+    margin-top: 0;
+}
+.contact h2 {
+    clear: left;
+}
+.capacity h2 {
+    clear: left;
+}
+.contact>p:nth-child(3){
+    margin-top: 3px;
+}
+dd {
+    margin-left: 0;
+}

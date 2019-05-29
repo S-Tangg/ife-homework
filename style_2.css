@@ -1,0 +1,43 @@
+header {
+    width: 150px;
+    height: 728px;
+    background-color: #409FFF;
+    float: left;
+}
+h1 {
+    width: 75px;
+    color: white;
+    font-weight: bold;
+    margin: 100px auto;
+    
+}
+.content {
+    float: left;
+    margin-left: 10px;
+}
+.col_1 {
+    float: left;
+    margin-top: 0;
+}
+.col_2 {
+    float: left;
+    margin-left:50px;
+    margin-top: 0;
+}
+.col_3 {
+    float: left;
+    margin-left:50px;
+    margin-top: 0;
+}
+.contact h2 {
+    clear: both;
+}
+.capacity h2 {
+    clear: left;
+}
+.contact>p:nth-child(3){
+    margin-top: 3px;
+}
+dd {
+    margin-left: 0;
+}
