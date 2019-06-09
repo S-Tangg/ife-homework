@@ -1,0 +1,120 @@
+header {
+    padding: 15px 0;
+    background-color: #303030;
+}
+.header_main {
+    width: 960px;
+    margin: 0 auto;
+    position: relative;
+}
+.header_main h1 {
+    margin: 0;
+    color: #F0F0F0;
+}
+.nav_container {
+    position: absolute;
+    top: 5px;
+    right: 50px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    
+}
+.nav {
+    display: inline-block;
+}
+.nav a {
+    color: #F0F0F0;
+    margin-right: 5px;
+}
+.nav a:hover {
+    color: 	#B8B8B8;
+}
+.banner {
+    background-color: #66CC33;
+    position: relative;
+    height: 250px;
+    
+}
+.banner_info {
+    position: absolute;
+    bottom: 8px;
+    right: 100px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    
+}
+.banner_info_col {
+    float: left;
+}
+.banner_info_col a{
+    display: block;
+    text-decoration: none;
+    border: 1px solid #585858;
+    background-color: #F0F0F0;
+    opacity: 0.7;
+    margin: 0 3px;
+    padding: 4px 8px;
+
+}
+.banner_info_col a:hover {
+    opacity: 1;
+    height: 35px;
+}
+.main_nav {
+    border-bottom: 1px solid #585858;
+}
+.main_nav div {
+    width: 960px;
+    margin: 0 auto;
+}
+.main_nav div ul{
+    margin-bottom: 0;
+    padding: 0;
+    list-style-type: none;
+    overflow: hidden;
+}
+.main_nav div ul li {
+    float: left;
+}
+.main_nav div ul li a {
+    display: block;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #585858;
+    border-bottom: 0;
+    border-radius: 20px 20px 0 0;
+    background-color: #E0E0E0;
+    color: #303030;
+}
+.main_nav div ul li .first_active {
+    background-color: #FFFFFF;
+}
+.main_content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 960px;
+    margin: 0 auto;
+}
+.content {
+    border: 1px solid #303030;
+    padding: 80px;
+    margin: 5px;
+    flex: 1 1;
+    text-align: center;
+}
+footer {
+    height: 150px;
+    background-color: #585858;
+    margin-top: 15px;
+    text-align: center;
+}
+.footer_info {
+    color: #B8B8B8;
+    padding-top: 20px;
+}
