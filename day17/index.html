@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>timesTable</title>
+    <style>
+        table {
+            width: 800px;
+            height: 600px;
+            margin: 0 auto;
+            border-right: 1px solid #000000;
+            border-bottom: 1px solid #000000;
+
+            /* border: none; */
+            text-align: center;
+        }
+
+        table td,
+        table th {
+            border-left: 1px solid #000000;
+            border-top: 1px solid #000000;
+        }
+
+        table th {
+            height: 50px;
+        }
+        p {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <table cellspacing="0">
+        <thead>
+            <tr class="row">
+                <th colspan="9">99乘法表</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="row">
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+            </tr>
+            <tr class="row">
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+            </tr>
+            <tr class="row">
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+            </tr>
+            <tr class="row">
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+            </tr>
+            <tr class="row">
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+            </tr>
+            <tr class="row">
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+            </tr>
+            <tr class="row">
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+            </tr>
+            <tr class="row">
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+            </tr>
+            <tr class="row">
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+                <td class="rowcell"></td>
+            </tr>
+        </tbody>
+    </table>
+    <p id="sayHi"></p>
+    <script>
+        function conuntNine() {
+            for (x = 1; x <= 9; x++) {
+                for (y = 1; y <= 9; y++) {
+                    var z = x + "*" + y + "=" + x*y;
+                    console.log(z);
+                    document.getElementsByClassName("row")[x].getElementsByClassName("rowcell")[y - 1].innerHTML = z;
+                }
+            }
+        }
+        
+        function sayGreeting() {
+            var time = new Date().getHours();
+            var greeting;
+            if(time < 12) {
+                greeting = "good morning";
+            }
+            else if(time > 18) {
+                greeting = "good night";
+            }
+            else {
+                greeting = "good afternoon";
+            }
+            document.getElementById("sayHi").innerHTML = greeting;
+        }
+        conuntNine();
+        sayGreeting();
+    </script>
+</body>
+
+</html>
