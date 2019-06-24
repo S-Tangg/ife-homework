@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hahah</title>
+    <style>
+    div {
+        height: 480px;
+        width: 480px;
+        border: 2px solid #000000;
+        margin: 0 auto;
+        background: url('erik.jpg') no-repeat 0 0;
+    }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        var picContainer = document.querySelector('div');
+        var yPosition = 0;
+        var y;
+        function setPic() {
+            if (yPosition === 0) {
+                y = -480;
+            }
+            if (yPosition === -7680) {
+                y = 480
+            }
+            yPosition += y;
+            picContainer.style.backgroundPositionY = yPosition + 'px';
+        }
+        setInterval(setPic, 100);        
+    </script>
+</body>
+</html>
