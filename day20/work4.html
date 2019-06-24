@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hahah</title>
+</head>
+<body>
+    <div id="fade-obj" style="width:300px;height:300px;background:#3399FF"></div>
+    <button id="fade-btn">淡出</button>
+</body>
+<script>
+var transColor = document.querySelector('div');
+var btnRest = document.querySelector('button');
+var speed;
+var timer = null;
+var alpha;
+var target;
+
+// console.log('%O', btnRest);
+
+function startRun() {
+    if(btnRest.innerHTML === '淡出') {
+        var btnText = '淡入';
+        speed = -2;
+        alpha = 100;
+        target = 0;
+    }
+    else {
+        var btnText = '淡出';
+        speed = 2;
+        alpha = 0;
+        target = 100;
+    }
+    
+    btnRest.disabled = true;
+    timer = setInterval(function() {
+        alpha = alpha + speed;
+        transColor.style.opacity = alpha / 100;
+        transColor.style.filter = 'alpha(opacity = alpha)';
+        if (alpha == target) {
+            clearInterval(timer);
+            btnRest.disabled = false;
+            btnRest.innerHTML = btnText;
+        }
+    }, 30)
+}
+btnRest.onclick = startRun;
+
+</script>
+</html>

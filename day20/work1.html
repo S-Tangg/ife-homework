@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="name">
+    <button id="submit-btn">Submit</button>
+    <script>
+    var findName = document.querySelector("#name");
+    var findButton = document.querySelector("#submit-btn");
+    function myFunction() {
+        var text = findName.value;
+        console.log(text);
+    }
+    function pressEnter(e) {
+        if (e.keyCode == 13) {
+            var text = findName.value;
+            console.log(text);
+        }
+        else if (e.keyCode == 27) {
+            findName.value = '';
+        }
+    }
+    findButton.addEventListener("click", myFunction);
+    document.addEventListener("keydown", pressEnter);
+    </script>
+</body>
+</html>
