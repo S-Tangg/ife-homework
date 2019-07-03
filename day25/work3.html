@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <select id="year-select">
+        <option value="2000">2000</option>
+        <option value="2001">2001</option>
+        <option value="2002">2002</option>
+        <option value="2004">2004</option>
+        <option value="2005">2005</option>
+        <option value="2017">2017</option>
+        <option value="2023">2023</option>
+        <option value="2028">2028</option>
+        ……
+        <option value="2032">2032</option>
+    </select>
+    
+    <select id="month-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+
+        ……
+        <option value="12">12</option>
+    </select>
+    
+    <select id="day-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="11">11</option>
+        <option value="14">14</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="23">23</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="2=30">30</option>
+        ……
+        <option value="31">31</option>
+    </select>
+    
+    <select id="hour-select">
+        <option value="0">00</option>
+        <option value="1">01</option>
+        <option value="2">02</option>
+        <option value="3">03</option>
+        <option value="4">04</option>
+        <option value="5">05</option>
+        <option value="6">06</option>
+        <option value="17">17</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+
+        ……
+        <option value="23">23</option>
+    </select>
+    
+    <select id="minite-select">
+        <option value="0">00</option>
+        <option value="1">01</option>
+        <option value="2">02</option>
+        <option value="4">04</option>
+        <option value="5">05</option>
+        <option value="8">08</option>
+        <option value="13">13</option>
+        <option value="17">17</option>
+        <option value="25">25</option>
+        <option value="44">44</option>
+        <option value="46">46</option>
+        <option value="52">52</option>
+        <option value="54">54</option>
+        <option value="58">58</option>
+        ……
+        <option>59</option>
+    </select>
+    
+    <select id="second-select">
+        <option value="0">00</option>
+        <option value="1">01</option>
+        <option value="2">02</option>
+        <option value="4">04</option>
+        <option value="5">05</option>
+        <option value="8">08</option>
+        <option value="13">13</option>
+        <option value="17">17</option>
+        <option value="25">25</option>
+        <option value="44">44</option>
+        <option value="46">46</option>
+        <option value="52">52</option>
+        <option value="54">54</option>
+        <option value="58">58</option>
+        ……
+        <option>59</option>
+    </select>
+    
+    <p id="result-wrapper">
+        现在距离
+        <span id="year">xxxx</span>年<span id="month">xx</span>月<span id="day">xx</span>日星期<span id="weekday">x</span>
+        <span id="hour">hh</span>:<span id="mins">mm</span>:<span id="sec">ss</span>
+        <span id="text">还有</span><span id="cal-day">x</span>天<span id="cal-hour">x</span>小时<span id="cal-mins">x</span>分钟<span id="cal-sec">x</span>秒
+    </p>
+    <script>
+    var getWeek = new Array();  //储存所选的年月日，用来计算星期x
+    var calTime = new Array();  //存储年、月、日、小时、分钟、秒，计算时间差
+    function getText(id) {
+        var text = document.getElementById(id);
+        return text;
+    }
+    function weekday() {
+        if (getWeek.length === 3) {
+            var date = new Date(getWeek[0], getWeek[1],getWeek[2]);
+            var x = '日一二三四五六'.charAt(date.getDay());
+            getText('weekday').innerHTML = x;
+        }
+
+    }
+    function compareYear(n) {
+        var date = new Date();
+        if (n < date.getFullYear()) {
+            document.getElementById('text').innerHTML = '已过去';
+        }
+        else {
+            document.getElementById('text').innerHTML = '还有';
+        }
+    }
+    function calDate() {
+        if (calTime.length ===6) {
+            var date1 = calTime[0] + '/' + calTime[1] + '/' + calTime[2] + ' ' +calTime[3] + ':' + calTime[4] + ':' + calTime[5];
+            var date2 = new Date();
+            var date3 = date2.getTime() - new Date(date1).getTime();
+            var date = Math.abs(date3);
+            var days = Math.floor(date / (24 * 3600 * 1000));
+            var leave1 = date % (24 * 3600 * 1000);
+            var hours = Math.floor(leave1 / (3600 * 1000));
+            var leave2 = leave1 % (3600 * 1000);
+            var mins = Math.floor(leave2 / (60 * 1000));
+            var leave3 = leave2 % (60 * 1000);
+            var sec = Math.round(leave3 / 1000);
+            getText('cal-day').innerHTML = days;
+            getText('cal-hour').innerHTML = hours;
+            getText('cal-mins').innerHTML = mins;
+            getText('cal-sec').innerHTML = sec;
+        }
+    }
+    document.body.onchange = function(e) {
+        var target = e.target;
+        var targetId = target.id;
+        var index = target.selectedIndex;
+        var selectText = target.options[index].text;
+        switch (targetId) {
+            case 'year-select':
+                getText('year').innerHTML = selectText;
+                getWeek[0] = selectText;   //把用户选的年存储到getWeek
+                weekday();                 //判断是否可以得到星期x
+                compareYear(selectText);   //改变文案
+                calTime[0] = selectText;
+                calDate();
+                break;
+            case 'month-select':
+                getText('month').innerHTML = selectText;
+                getWeek[1] = selectText;  //把用户选的月存储到getWeek
+                weekday();                 //判断是否可以得到星期x
+                calTime[1] = selectText;
+                calDate();
+                break;
+            case 'day-select':
+                getText('day').innerHTML = selectText;
+                getWeek[2] = selectText; //把用户选的月存储到getWeek
+                weekday();                //判断是否可以得到星期x
+                calTime[2] = selectText;
+                calDate();
+                break;
+            case 'hour-select':
+                getText('hour').innerHTML = selectText;
+                calTime[3] = selectText;
+                calDate();
+                break;
+            case 'minite-select':
+                getText('mins').innerHTML = selectText;
+                calTime[4] = selectText;
+                calDate();
+                break;
+            case 'second-select':
+                getText('sec').innerHTML = selectText;
+                calTime[5] = selectText;
+                calDate();
+            
+        }
+    }
+    
+    </script>
+</body>
+</html>
