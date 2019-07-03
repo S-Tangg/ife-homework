@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>clock</title>
+</head>
+<body onload="startTime()">
+    <p id="clock"></p>
+    <script>
+    function startTime() {
+        var today = new Date();
+        var year = today.getFullYear();
+        var month = today.getMonth();
+        var day = today.getDate();
+        var weekDay = today.getDay();
+        var h = today.getHours();
+        var mins = today.getMinutes(); 
+        var sec = today.getSeconds();
+        month = checkTime(month+1);
+        day = checkTime(day);
+        h = checkTime(h);
+        mins = checkTime(mins);
+        sec = checkTime(sec);
+        weekDay = weeks(weekDay);
+        document.getElementById('clock').innerHTML = year + '年' + month + '月' + day + '日' + weekDay + h + ':' + mins + ':'+ sec;
+        setTimeout(startTime,500);
+        
+    }
+    
+    function checkTime(n) {
+        if (n < 10) {
+            n = '0' + n;
+        }
+        return n;
+    }
+    function weeks(i) {
+        var weekArr = [];
+        weekArr[0] = '星期天';
+        weekArr[1] = '星期一';
+        weekArr[2] = '星期二';
+        weekArr[3] = '星期三';
+        weekArr[4] = '星期四';
+        weekArr[5] = '星期五';
+        weekArr[6] = '星期六';
+        i = weekArr[i];
+        return i;
+    }
+
+    </script>
+</body>
+</html>
