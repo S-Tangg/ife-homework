@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    * {
+        box-sizing: border-box;
+    }
+    input {
+        width: 173px;
+    }
+    ul {
+        width: 173px;
+        border: 1px solid 	#C0C0C0;
+        border-top: none;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        color: #C0C0C0;
+        display: none;
+    }
+    li,
+    input {
+        padding-left: 8px;
+    }
+    li:hover {
+        background-color:#DDDDDD;
+        color: #000000;
+    }
+  
+
+    </style>
+
+</head>
+<body>
+    <div class="wrapper">
+        <input id="email-input" type="text" autofocus>
+        <ul id="email-sug-wrapper" class="email-sug"></ul>
+    </div>
+    <script>
+    var inp = document.getElementById('email-input');
+    var oul = document.getElementById('email-sug-wrapper');
+    var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+    var nowSelectTipIndex = 0;
+    inp.onkeyup = function(e) {
+        var e = e || window.event;
+        if (e.keyCode !== 13 && e.keyCode !== 38 && e.keyCode !== 40 ) {
+            resetSelected();
+
+        }
+/*         if (e.keyCode === 13 || e.keyCode === 38 || e.keyCode === 40) {
+
+        } */
+        getValue();
+        liContent();
+        keyPressEvent(e);
+        addLi();
+        showUl();
+        if (e.keyCode === 27) {
+            inp.select();
+        }
+        if (e.keyCode === 13) {
+            inp.value = document.querySelectorAll('li')[nowSelectTipIndex].textContent;
+            document.querySelector('ul').style.display = 'none';
+        }
+    }
+    oul.onclick = function (e) {
+        var e = e || window.event;
+        var target = e.target || e.srcElement;
+        if (target.nodeName.toLowerCase() === 'li') {
+            inp.value = target.textContent;
+            document.querySelector('ul').style.display = 'none';
+            inp.focus();
+        }
+    }
+    function getValue() {
+        var value1 = inp.value;
+        var value2 = value1.trim();
+        return value2;
+    }
+    function liContent() {
+        var value3 = getValue();
+        var value4 = new Array();
+        var indexArr = new Array();
+        var postfix;
+        if (value3.indexOf('@') !== -1) {
+            var index = value3.indexOf('@');
+            postfix = value3.slice(index + 1, value3.length);
+            value3 = value3.slice(0, index);
+        }
+        for (i = 0; i < postfixList.length; i++) {
+            if (postfixList[i].indexOf(postfix) === 0) {
+                indexArr.push(i);
+                
+            }
+            else {
+                value4[i] = value3 + '@' + postfixList[i];
+            }
+        }
+        if (indexArr.length > 0) {
+            value4.length = 0;
+            for (j = 0; j < indexArr.length; j++) {
+                value4[j] = value3 + '@' + postfixList[indexArr[j]];
+            }
+        }
+        return value4;
+    }
+    function addLi() {
+        var value5 = liContent();
+        var x = document.querySelectorAll('li');
+        if (x.length !== 0) {
+            for (i = 0; i < x.length; i++) {
+                x[i].parentNode.removeChild(x[i]);
+            }
+        }
+        for (j = 0; j < value5.length; j++) {
+            var newLi = document.createElement('li');
+            newLi.textContent = value5[j];
+            oul.appendChild(newLi); 
+            
+        }
+        document.querySelectorAll('li')[nowSelectTipIndex].style.backgroundColor = 'rgb(255, 228, 196)';
+    }
+    function showUl() {
+        var a = getValue();
+        if (a !== '') {
+            document.querySelector('ul').style.display = 'block';
+        }
+        else {
+            document.querySelector('ul').style.display = 'none';
+        }
+    }
+    /* function resetSelected() {
+        var x = document.querySelectorAll('li');
+        for (i = 0; i < x.length; i++) {
+            var bgColor = window.getComputedStyle(x[i], null).getPropertyValue('background-color');
+            if (bgColor === 'rgb(255, 228, 196)' && i !== 0) {
+                    x[i].style.backgroundColor =  'transpant';
+                    x[0].style.backgroundColor = 'rgb(255, 228, 196)';   
+            }
+        }
+    } */
+    function resetSelected() {
+        nowSelectTipIndex = 0;
+    }
+    function keyPressEvent(e) { 
+        if (e.keyCode === 38) {
+            if (nowSelectTipIndex !== 0) {
+                nowSelectTipIndex -= 1;   
+            }
+            else {
+                nowSelectTipIndex = document.querySelectorAll('li').length - 1;
+            }
+        }
+        if (e.keyCode === 40) {
+            if (nowSelectTipIndex !== document.querySelectorAll('li').length - 1) {
+                nowSelectTipIndex += 1;
+            }
+            else {
+                nowSelectTipIndex = 0;
+            }
+        }
+       
+    }
+    </script>
+</body>
+</html>
