@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function Restaurant(cash, seats, staffs) {
+        this.cash = cash;
+        this.seats = seats;
+        this.staffs = staffs;
+    }
+    Restaurant.prototype.hire = function() {
+        
+    }
+    Restaurant.prototype.fire = function() {
+      
+    }
+    function Staff(id, name, salary) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+    }
+    Staff.prototype.endWork = function() {
+
+    }
+    function Waiters(id, name, salary) {
+        Staff.call(this, id, name, salary);
+    }
+    Waiters.prototype = Object.create(Staff.prototype);
+    Waiters.prototype.constructor = Waiters;
+    Waiters.prototype.endWork = function() {
+
+    }
+    function Cook(id, name, salary) {
+        Staff.call(this, id, name, salary);
+    }
+    Cook.prototype = Object.create(Staff.prototype);
+    Cook.prototype.constructor = Cook;
+    Cook.prototype.endWork = function() {
+
+    }
+    function Customer() {
+        this.order = function() {
+
+        }
+        this.eat = function() {
+
+        }
+    }
+    function Menu(name, cost, price) {
+        this.name = name;
+        this.cost = cost;
+        this.price = price;
+
+    }
+    </script>
+</body>
+</html>
